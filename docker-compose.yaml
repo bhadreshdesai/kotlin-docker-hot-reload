@@ -4,9 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile
     command:
+      # override Dockerfile command
+      # execute the classes task in the background which will monitor the file system
+      # let the bootRun task start first. Start the classes background task after 15 seconds
+      # adjust the sleep time according to your need
       sh -c '
-      ( (sleep 10; gradle compileKotlin --continuous --parallel --build-cache --configuration-cache --no-daemon -Dorg.gradle.vfs.verbose=true) & ) &&
-       gradle bootRun --no-daemon --no-watch-fs'
+      ( (sleep 15; gradle classes --continuous --no-daemon -Dorg.gradle.vfs.verbose=true) & ) &&
+       gradle bootRun --no-daemon'
     ports:
       - 8080:8080
     volumes:
