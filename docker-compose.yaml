@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      sh -c '
+      ( (sleep 30; gradle compileKotlin --continuous --parallel --build-cache --configuration-cache --no-daemon -Dorg.gradle.vfs.verbose=true) & ) &&
+       gradle bootRun --no-daemon --no-watch-fs'
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src/main:/app/src/main
+      #- data:/app/.gradle
+      #- data:/app/build
+      #- data:/home/gradle/.gradle
+    restart: always
+volumes:
+  data:

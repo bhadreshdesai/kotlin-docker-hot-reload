@@ -1,0 +1,11 @@
+.git/
+.gradle/
+.idea/
+build/
+gradle/
+docker-compose.yaml
+Dockerfile
+gradlew
+gradlew.bat
+HELP.md
+README.md
