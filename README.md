@@ -1,9 +1,11 @@
 # Kotlin Docker Hot Reload
 
 ## commands
+Create gradle cache volume
 ```shell
-curl http://localhost:8080/greeting?name=Kotlin
+docker volume create gradlecache
 ```
+
 Build docker image
 ```shell
 docker compose build --no-cache
@@ -24,5 +26,3 @@ sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin'
 ```
 
 ## TODO
-- first run takes 115 seconds to start up
-- mounting volumes gives error /app already watched
