@@ -23,12 +23,22 @@ The background classes task will pickup the file change
 Spring boot live reload should restart once the kotlin class is compiles
 
 ```shell
-curl 'http://localhost:8080/greeting?name=Kotlin'
-sed -i 's/${name} !!!/${name} !/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
-sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin'
-sed -i 's/${name} !/${name} !!!/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
-sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin'
+# gnu sed
+curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
+sed -i'' -e 's/${name} !!!/${name} !/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
+sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
+sed -i'' -e 's/${name} !/${name} !!!/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
+sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
 ```
+```shell
+# osx sed
+curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
+sed -i '' -e 's/${name} !!!/${name} !/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
+sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
+sed -i '' -e 's/${name} !/${name} !!!/g' ./src/main/kotlin/com/bdd/kotlindockerhotreload/controller/GreetingsController.kt
+sleep 5; curl 'http://localhost:8080/greeting?name=Kotlin' ; echo ''
+```
+
 This should give the following output
 ```
 Hello, Kotlin !!!Hello, Kotlin !Hello, Kotlin !!!
